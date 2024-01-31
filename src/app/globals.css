@@ -2,32 +2,95 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 164 31% 47%;
+    --primary-foreground: 355.7 100% 97.3%;
+    --secondary: 156 28% 72%;
+    --secondary-foreground: 240 5.9% 10%;
+    --tertiary: 27 82% 98%;
+    --muted: 60 4.8% 95.9%;
+    --muted-foreground: 237 13% 40%;
+    --accent: 237 9% 96%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 7 78% 86%;
+    --input: 7 78% 86%;
+    --ring: 164 31% 47%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 237 22% 20%;
+    --foreground: 0 0% 95%;
+    --card: 240 19% 16%;
+    --card-foreground: 300 0% 100%;
+    --popover: 0 0% 9%;
+    --popover-foreground: 0 0% 95%;
+    --primary: 164 31% 47%;
+    --primary-foreground: 355.7 100% 97.3%;
+    --secondary: 156 28% 72%;
+    --secondary-foreground: 240 5.9% 10%;
+    --tertiary: 237 22% 20%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 237 13% 75%;
+    --accent: 240 19% 16%;
+    --accent-foreground: 355.7 100% 97.3%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 85.7% 97.3%;
+    --border: 237 13% 40%;
+    --input: 237 13% 40%;
+    --ring: 164 31% 47%;
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+.theme-toggler {
+  border-radius: 50%;
+}
+
+.ant-float-btn-body {
+  @apply bg-primary;
+  @apply hover:bg-secondary;
+}
+
+.ant-float-btn-default .ant-float-btn-body {
+  @apply bg-primary;
+  @apply transition-all;
+  /* transition-duration: 200ms; */
+}
+
+.anticon.anticon-plus svg {
+  fill: white;
+}
+
+.floatButton {
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  background-color: #1890ff;
+  color: #fff;
+  font-size: 24px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 }
