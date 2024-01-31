@@ -1,7 +1,14 @@
-import React from "react";
+import { FloatButton } from "antd";
+import { PlusOutlined } from "@ant-design/icons";
 
-const Completed = () => {
-  return <div>Completed</div>;
-};
+import TaskPage from "@/components/tasks/TaskPage";
+import { AddNew } from "@/components/AddNew";
 
-export default Completed;
+export default function Home() {
+  return (
+    <main>
+      <TaskPage />
+      <AddNew />
+    </main>
+  );
+}

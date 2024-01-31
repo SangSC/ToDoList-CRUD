@@ -43,8 +43,10 @@ export function DataTableRowActions<TData>({
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-[160px]">
         <DropdownMenuItem>Edit</DropdownMenuItem>
-        <DropdownMenuItem>Make a copy</DropdownMenuItem>
-        <DropdownMenuItem>Favorite</DropdownMenuItem>
+        {/* <DropdownMenuItem>Make a copy</DropdownMenuItem>
+        <DropdownMenuItem>Favorite</DropdownMenuItem> */}
+
+        {/* labels */}
         <DropdownMenuSeparator />
         <DropdownMenuSub>
           <DropdownMenuSubTrigger>Labels</DropdownMenuSubTrigger>
@@ -59,6 +61,7 @@ export function DataTableRowActions<TData>({
           </DropdownMenuSubContent>
         </DropdownMenuSub>
         <DropdownMenuSeparator />
+
         <DropdownMenuItem>
           Delete
           <DropdownMenuShortcut>⌘⌫</DropdownMenuShortcut>
