@@ -13,7 +13,7 @@ import { CheckOutlined, CloseOutlined } from "@ant-design/icons";
 
 export function SelectStatus() {
   return (
-    <Select>
+    <Select defaultValue="false">
       <SelectTrigger className="w-[180px]">
         <SelectValue placeholder="Select the Status" />
       </SelectTrigger>

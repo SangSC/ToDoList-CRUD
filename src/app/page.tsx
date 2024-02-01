@@ -12,7 +12,7 @@ export default function Home() {
       <HeadingText title="Your Tasks" subtitle="Keep Moving Forward" />
       <TaskTable />
       {/* <TaskPage /> */}
-      <AddNew onClose={() => {}} />
+      <AddNew onClose={() => {}} addTask={async () => {}} />
     </main>
   );
 }
