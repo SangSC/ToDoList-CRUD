@@ -1,3 +1,5 @@
+"use client";
+
 import { FloatButton } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
 
@@ -7,8 +9,8 @@ import { AddNew } from "@/components/AddNew";
 export default function Home() {
   return (
     <main>
-      <TaskPage />
-      <AddNew />
+      {/* <TaskPage /> */}
+      <AddNew onClose={() => {}} />
     </main>
   );
 }
