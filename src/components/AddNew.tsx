@@ -21,6 +21,9 @@ import { FloatButton } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
 import { SelectStatus } from "./create/SelectStatus";
 
+// crud
+import { Crud, CrudListComponent } from "./auto-crud/type";
+
 interface AddNewProps {
   onClose: () => void;
   addTask: (FormData: any) => Promise<void>;

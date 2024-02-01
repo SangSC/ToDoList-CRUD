@@ -35,10 +35,14 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { CheckOutlined, CloseOutlined } from "@ant-design/icons";
 
 // crud
 import { Crud, CrudListComponent } from "./auto-crud/type";
 import { Pencil1Icon, TrashIcon, PlusIcon } from "@radix-ui/react-icons";
+
+import { DataTableFacetedFilter } from "../components/tasks/data-table-faceted-filter";
+import { statuses } from "./create/data";
 
 interface Task {
   id: number;
@@ -93,28 +97,29 @@ const data: Task[] = [
 ];
 
 export const columns: ColumnDef<Task>[] = [
-  {
-    id: "select",
-    header: ({ table }) => (
-      <Checkbox
-        checked={
-          table.getIsAllPageRowsSelected() ||
-          (table.getIsSomePageRowsSelected() && "indeterminate")
-        }
-        onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
-        aria-label="Select all"
-      />
-    ),
-    cell: ({ row }) => (
-      <Checkbox
-        checked={row.getIsSelected()}
-        onCheckedChange={(value) => row.toggleSelected(!!value)}
-        aria-label="Select row"
-      />
-    ),
-    enableSorting: false,
-    enableHiding: false,
-  },
+  // // select
+  //   {
+  //     id: "select",
+  //     header: ({ table }) => (
+  //       <Checkbox
+  //         checked={
+  //           table.getIsAllPageRowsSelected() ||
+  //           (table.getIsSomePageRowsSelected() && "indeterminate")
+  //         }
+  //         onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
+  //         aria-label="Select all"
+  //       />
+  //     ),
+  //     cell: ({ row }) => (
+  //       <Checkbox
+  //         checked={row.getIsSelected()}
+  //         onCheckedChange={(value) => row.toggleSelected(!!value)}
+  //         aria-label="Select row"
+  //       />
+  //     ),
+  //     enableSorting: false,
+  //     enableHiding: false,
+  //   },
   {
     accessorKey: "taskName",
     header: ({ column }) => {
@@ -129,7 +134,9 @@ export const columns: ColumnDef<Task>[] = [
       );
     },
     cell: ({ row }) => (
-      <div className="capitalize">{row.getValue("taskName")}</div>
+      <div className="capitalize flex justify-center lg:mr-10 xl:justify-start xl:ml-4">
+        {row.getValue("taskName")}
+      </div>
     ),
   },
   {
@@ -164,7 +171,15 @@ export const columns: ColumnDef<Task>[] = [
     cell: ({ row }) => {
       return (
         <div className="capitalize">
-          {row.getValue("is_completed") ? "Completed" : "Not completed"}
+          {row.getValue("is_completed") ? (
+            <div>
+              <CheckOutlined /> Completed
+            </div>
+          ) : (
+            <div>
+              <CloseOutlined /> Unfinished
+            </div>
+          )}
         </div>
       );
     },
@@ -219,10 +234,8 @@ export const columns: ColumnDef<Task>[] = [
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
-            <DropdownMenuItem>Copy taskTask ID</DropdownMenuItem>
-
-            <DropdownMenuItem>View customer</DropdownMenuItem>
-            <DropdownMenuItem>View taskTask details</DropdownMenuItem>
+            <DropdownMenuItem>Edit</DropdownMenuItem>
+            <DropdownMenuItem>Delete</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       );
@@ -260,7 +273,8 @@ export function TaskTable() {
 
   return (
     <div className="mx-auto">
-      <div className="flex items-center py-4">
+      <div className="flex items-center py-4 gap-x-4">
+        {/* search */}
         <Input
           placeholder="Filter Tasks..."
           value={
@@ -271,6 +285,16 @@ export function TaskTable() {
           }
           className="max-w-sm"
         />
+        {/* getColumn('is_completed') */}
+        {table.getColumn("is_completed") && (
+          <DataTableFacetedFilter
+            column={table.getColumn("is_completed")}
+            title="Status"
+            options={statuses}
+          />
+        )}
+
+        {/* visible columns */}
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="outline" className="ml-auto">
@@ -298,6 +322,7 @@ export function TaskTable() {
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
+      {/* Table */}
       <div className="rounded-md border">
         <Table>
           <TableHeader>
@@ -348,6 +373,7 @@ export function TaskTable() {
           </TableBody>
         </Table>
       </div>
+      {/* Pagination */}
       <div className="flex items-center justify-end space-x-2 py-4">
         <div className="flex-1 text-sm text-muted-foreground">
           {table.getFilteredSelectedRowModel().rows.length} of{" "}

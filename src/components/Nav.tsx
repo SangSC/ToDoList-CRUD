@@ -9,8 +9,8 @@ import { motion } from "framer-motion";
 
 const links = [
   { path: "/", name: "all tasks" },
-  { path: "/completed", name: "Completed" },
-  { path: "/unfinished", name: "Unfinished" },
+  // { path: "/completed", name: "Completed" },
+  // { path: "/unfinished", name: "Unfinished" },
 ];
 
 const Nav = ({
