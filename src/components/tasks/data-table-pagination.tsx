@@ -23,11 +23,12 @@ export function DataTablePagination<TData>({
   table,
 }: DataTablePaginationProps<TData>) {
   return (
-    <div className="flex flex-col md:flex-row	 justify-between px-2 gap-y-2 ">
-      <div className="flex-1 text-sm text-muted-foreground items-start">
+    <div className="flex flex-col md:flex-row	justify-between px-2 gap-y-2 ">
+      {/* selected rows */}
+      {/* <div className="flex-1 text-sm text-muted-foreground items-start">
         {table.getFilteredSelectedRowModel().rows.length} of{" "}
         {table.getFilteredRowModel().rows.length} row(s) selected.
-      </div>
+      </div> */}
 
       {/* pagination */}
       <div className="flex items-center space-x-6 lg:space-x-8 ">

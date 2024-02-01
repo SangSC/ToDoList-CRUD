@@ -8,7 +8,7 @@ import { TaskTable } from "@/components/TaskTable";
 
 export default function Home() {
   return (
-    <main className="mx-[10px]">
+    <main className="mx-[10px] xl:mx-[20px]">
       <HeadingText title="Your Tasks" subtitle="Keep Moving Forward" />
       <TaskTable />
       {/* <TaskPage /> */}

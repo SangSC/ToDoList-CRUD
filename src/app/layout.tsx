@@ -25,7 +25,7 @@ export default function RootLayout({
       <body className={outfit.className}>
         <ThemeProvider attribute="class" defaultTheme="light">
           <Header />
-          {children}
+          <div className="flex flex-col min-h-[85vh]">{children}</div>
           <Footer />
         </ThemeProvider>
       </body>

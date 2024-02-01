@@ -1,6 +1,6 @@
 "use client";
 
-import * as React from "react";
+import React, { useEffect, useState } from "react";
 import {
   ColumnDef,
   ColumnFiltersState,
@@ -42,86 +42,25 @@ import { Crud, CrudListComponent } from "./auto-crud/type";
 import { Pencil1Icon, TrashIcon, PlusIcon } from "@radix-ui/react-icons";
 
 import { DataTableFacetedFilter } from "../components/tasks/data-table-faceted-filter";
+import { DataTablePagination } from "../components/tasks/data-table-pagination";
+
 import { statuses } from "./create/data";
+import { getTasks } from "../lib/db";
 
 interface Task {
   id: number;
-  taskName: string;
+  name: string;
   description: string;
   is_completed: boolean;
   created_at: string;
   updated_at: string;
 }
 
-const data: Task[] = [
-  {
-    id: 1,
-    taskName: "Task 1",
-    description: "Description for Task 1",
-    is_completed: false,
-    created_at: "2023-01-01T08:00:00.000Z",
-    updated_at: "2023-01-01T08:00:00.000Z",
-  },
-  {
-    id: 2,
-    taskName: "Task 2",
-    description: "Description for Task 2",
-    is_completed: true,
-    created_at: "2023-02-01T12:30:00.000Z",
-    updated_at: "2023-02-01T12:30:00.000Z",
-  },
-  {
-    id: 3,
-    taskName: "Task 3",
-    description: "Description for Task 3",
-    is_completed: false,
-    created_at: "2023-03-15T18:45:00.000Z",
-    updated_at: "2023-03-15T18:45:00.000Z",
-  },
-  {
-    id: 4,
-    taskName: "Task 4",
-    description: "Description for Task 4",
-    is_completed: true,
-    created_at: "2023-04-20T09:15:00.000Z",
-    updated_at: "2023-04-20T09:15:00.000Z",
-  },
-  {
-    id: 5,
-    taskName: "Task 5",
-    description: "Description for Task 5",
-    is_completed: false,
-    created_at: "2023-05-10T14:00:00.000Z",
-    updated_at: "2023-05-10T14:00:00.000Z",
-  },
-];
-
 export const columns: ColumnDef<Task>[] = [
-  // // select
-  //   {
-  //     id: "select",
-  //     header: ({ table }) => (
-  //       <Checkbox
-  //         checked={
-  //           table.getIsAllPageRowsSelected() ||
-  //           (table.getIsSomePageRowsSelected() && "indeterminate")
-  //         }
-  //         onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
-  //         aria-label="Select all"
-  //       />
-  //     ),
-  //     cell: ({ row }) => (
-  //       <Checkbox
-  //         checked={row.getIsSelected()}
-  //         onCheckedChange={(value) => row.toggleSelected(!!value)}
-  //         aria-label="Select row"
-  //       />
-  //     ),
-  //     enableSorting: false,
-  //     enableHiding: false,
-  //   },
+  // select
+
   {
-    accessorKey: "taskName",
+    accessorKey: "name",
     header: ({ column }) => {
       return (
         <Button
@@ -135,7 +74,7 @@ export const columns: ColumnDef<Task>[] = [
     },
     cell: ({ row }) => (
       <div className="capitalize flex justify-center lg:mr-10 xl:justify-start xl:ml-4">
-        {row.getValue("taskName")}
+        {row.getValue("name")}
       </div>
     ),
   },
@@ -244,6 +183,22 @@ export const columns: ColumnDef<Task>[] = [
 ];
 
 export function TaskTable() {
+  const [data, setData] = useState<Task[]>([]); // Use state to store the data
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("https://wayi.league-funny.com/api/task");
+        const jsonData = await response.json();
+        setData(jsonData.data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []); // Run the effect only once when the component mounts
+
   const [sorting, setSorting] = React.useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
@@ -374,29 +329,8 @@ export function TaskTable() {
         </Table>
       </div>
       {/* Pagination */}
-      <div className="flex items-center justify-end space-x-2 py-4">
-        {/* <div className="flex-1 text-sm text-muted-foreground">
-          {table.getFilteredSelectedRowModel().rows.length} of{" "}
-          {table.getFilteredRowModel().rows.length} row(s) selected.
-        </div> */}
-        <div className="space-x-2">
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={() => table.previousPage()}
-            disabled={!table.getCanPreviousPage()}
-          >
-            Previous
-          </Button>
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={() => table.nextPage()}
-            disabled={!table.getCanNextPage()}
-          >
-            Next
-          </Button>
-        </div>
+      <div className="mt-4 mb-10 flex justify-center xl:justify-end">
+        <DataTablePagination table={table} />
       </div>
     </div>
   );
