@@ -46,6 +46,7 @@ import { DataTablePagination } from "../components/tasks/data-table-pagination";
 
 import { statuses } from "./create/data";
 import { getTasks } from "../lib/db";
+import DeleteTask from "./DeleteTask";
 
 interface Task {
   id: number;
@@ -160,23 +161,13 @@ export const columns: ColumnDef<Task>[] = [
   {
     id: "actions",
     enableHiding: false,
+    maxSize: 40,
+    header: () => "Action",
     cell: ({ row }) => {
-      const taskTask = row.original;
-
       return (
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="ghost" className="h-8 w-8 p-0">
-              <span className="sr-only">Open menu</span>
-              <MoreHorizontal className="h-4 w-4" />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            <DropdownMenuLabel>Actions</DropdownMenuLabel>
-            <DropdownMenuItem>Edit</DropdownMenuItem>
-            <DropdownMenuItem>Delete</DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
+        <>
+          <DeleteTask />
+        </>
       );
     },
   },

@@ -49,14 +49,6 @@ export const AddNew = () => {
 
   async function addTask() {
     try {
-      console.log(
-        JSON.stringify({
-          name: name,
-          description: description,
-          is_completed: is_completed,
-        })
-      );
-
       const res = await fetch("https://wayi.league-funny.com/api/task", {
         method: "POST",
         headers: {
@@ -73,7 +65,11 @@ export const AddNew = () => {
         throw new Error(`HTTP error! Status: ${res.status}`);
       }
 
-      const data = await res.json();
+      const responseData = await res.json();
+      console.log("Task created successfully:", responseData.data);
+
+      // Do any additional processing if needed
+
       router.refresh();
       setName("");
       setDescription("");
