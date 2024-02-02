@@ -46,6 +46,7 @@ import { DataTablePagination } from "../components/tasks/data-table-pagination";
 
 import { statuses } from "./create/data";
 import { getTasks } from "../lib/db";
+import EditTask from "./EditTask";
 import DeleteTask from "./DeleteTask";
 
 interface Task {
@@ -162,12 +163,15 @@ export const columns: ColumnDef<Task>[] = [
     id: "actions",
     enableHiding: false,
     maxSize: 40,
-    header: () => "Action",
+    header: ({ column }) => {
+      return <div className="flex justify-center">Action</div>;
+    },
     cell: ({ row }) => {
       return (
-        <>
+        <div className="flex justify-center gap-x-1">
+          <EditTask />
           <DeleteTask />
-        </>
+        </div>
       );
     },
   },

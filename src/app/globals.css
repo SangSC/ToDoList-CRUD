@@ -87,6 +87,7 @@ h4 {
 .ant-float-btn-body {
   @apply bg-primary;
   @apply hover:bg-secondary;
+  /* border: 2px solid white; */
 }
 
 .ant-float-btn-default .ant-float-btn-body {
@@ -118,4 +119,37 @@ h4 {
 .preloader {
   padding: 70px 0;
   text-align: center;
+}
+
+.del-btn {
+  @apply text-white;
+  @apply bg-rose-500;
+  @apply hover:bg-rose-700;
+  @apply transition-all;
+  @apply cursor-pointer;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  font-size: 24px;
+}
+
+.dark .del-btn {
+  @apply bg-rose-700;
+  @apply hover:bg-rose-600;
+}
+
+.edit-btn {
+  @apply text-white;
+  @apply bg-sky-600;
+  @apply hover:bg-sky-700;
+  @apply transition-all;
+  @apply cursor-pointer;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  font-size: 24px;
+}
+.dark .edit-btn {
+  @apply bg-sky-700;
+  @apply hover:bg-sky-600;
 }

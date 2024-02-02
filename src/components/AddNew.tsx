@@ -15,21 +15,12 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectLabel,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { CheckOutlined, CloseOutlined } from "@ant-design/icons";
 import { Textarea } from "@/components/ui/textarea";
+import { Switch } from "@/components/ui/switch";
 
 import { FloatButton } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
-// import { SelectStatus } from "./create/SelectStatus";
+import { CheckOutlined, CloseOutlined } from "@ant-design/icons";
 
 // crud
 import { Crud, CrudListComponent } from "./auto-crud/type";
@@ -129,29 +120,18 @@ export const AddNew = () => {
                       />
                     </div>
                     {/* task status */}
-                    <Select
-                      value={is_completed.toString()}
-                      onValueChange={(value: string) =>
-                        setIsCompleted(value === "true")
-                      }
-                      defaultValue="false"
-                      required
-                    >
-                      <SelectTrigger className="w-[180px]">
-                        <SelectValue placeholder="Select the Status" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectGroup>
-                          <SelectLabel>Status</SelectLabel>
-                          <SelectItem value="true">
-                            <CheckOutlined /> Completed
-                          </SelectItem>
-                          <SelectItem value="false">
-                            <CloseOutlined /> Unfinished
-                          </SelectItem>
-                        </SelectGroup>
-                      </SelectContent>
-                    </Select>
+                    <div className="flex items-center space-x-2">
+                      <Switch
+                        id="is_completed"
+                        onCheckedChange={(checked: boolean) =>
+                          setIsCompleted(checked)
+                        }
+                        checked={is_completed}
+                      />
+                      <Label htmlFor="is_completed">
+                        <CheckOutlined /> Completed
+                      </Label>
+                    </div>
                   </div>
                 </form>
                 <SheetFooter className="mt-4">

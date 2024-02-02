@@ -1,6 +1,5 @@
 import { useRouter } from "next/navigation";
-import { TrashIcon } from "@radix-ui/react-icons";
-import { Button } from "@/components/ui/button";
+import { Trash2 } from "lucide-react";
 
 const DeleteTask = () => {
   const router = useRouter();
@@ -18,10 +17,14 @@ const DeleteTask = () => {
   }
 
   return (
-    <div>
-      <Button title="Delete" onClick={handleDelete}>
-        <TrashIcon />
-      </Button>
+    <div className="text-center">
+      <button
+        title="Delete"
+        onClick={handleDelete}
+        className="del-btn flex justify-center items-center"
+      >
+        <Trash2 className="w-[14px] h-[14px]" />
+      </button>
     </div>
   );
 };
