@@ -48,27 +48,40 @@ export const AddNew = () => {
   };
 
   async function addTask() {
-    const res = await fetch("https://wayi.league-funny.com/api/task", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify([
-        {
+    try {
+      console.log(
+        JSON.stringify({
           name: name,
           description: description,
           is_completed: is_completed,
-        },
-      ]),
-    });
-    const data = await res.json();
-    router.refresh();
-    setName("");
-    setDescription("");
-    setIsCompleted(false);
+        })
+      );
 
-    // Close the sheet after submission
-    closeSheet();
+      const res = await fetch("https://wayi.league-funny.com/api/task", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: name,
+          description: description,
+          is_completed: is_completed,
+        }),
+      });
+
+      if (!res.ok) {
+        throw new Error(`HTTP error! Status: ${res.status}`);
+      }
+
+      const data = await res.json();
+      router.refresh();
+      setName("");
+      setDescription("");
+      setIsCompleted(false);
+      closeSheet();
+    } catch (error) {
+      console.error("Error during fetch:", error);
+    }
   }
 
   return (
@@ -125,6 +138,8 @@ export const AddNew = () => {
                       onValueChange={(value: string) =>
                         setIsCompleted(value === "true")
                       }
+                      defaultValue="false"
+                      required
                     >
                       <SelectTrigger className="w-[180px]">
                         <SelectValue placeholder="Select the Status" />
