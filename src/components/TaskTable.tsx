@@ -45,7 +45,7 @@ import { DataTableFacetedFilter } from "../components/tasks/data-table-faceted-f
 import { DataTablePagination } from "../components/tasks/data-table-pagination";
 
 import { statuses } from "./create/data";
-import { getTasks } from "../lib/db";
+import { API_URL } from "../lib/API_URL";
 import EditTask from "./EditTask";
 import DeleteTask from "./DeleteTask";
 
@@ -183,7 +183,7 @@ export function TaskTable() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("https://wayi.league-funny.com/api/task");
+        const response = await fetch(API_URL);
         const jsonData = await response.json();
         setData(jsonData.data);
       } catch (error) {

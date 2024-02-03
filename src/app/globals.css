@@ -83,11 +83,15 @@ h4 {
 .theme-toggler {
   border-radius: 50%;
 }
+.ant-float-btn-circle {
+  height: 50px;
+  width: 50px;
+}
 
 .ant-float-btn-body {
   @apply bg-primary;
   @apply hover:bg-secondary;
-  /* border: 2px solid white; */
+  border: 2px solid white;
 }
 
 .ant-float-btn-default .ant-float-btn-body {

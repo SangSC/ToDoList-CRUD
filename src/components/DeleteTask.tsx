@@ -1,12 +1,14 @@
 import { useRouter } from "next/navigation";
 import { Trash2 } from "lucide-react";
 
+import { API_URL } from "../lib/API_URL";
+
 const DeleteTask = () => {
   const router = useRouter();
 
   async function handleDelete(event: React.MouseEvent<HTMLButtonElement>) {
     const id = event.currentTarget.id;
-    await fetch("https://wayi.league-funny.com/api/task", {
+    await fetch(API_URL, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

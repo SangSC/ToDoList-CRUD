@@ -23,6 +23,7 @@ import { PlusOutlined } from "@ant-design/icons";
 import { CheckOutlined, CloseOutlined } from "@ant-design/icons";
 
 // crud
+import { API_URL } from "../lib/API_URL";
 import { Crud, CrudListComponent } from "./auto-crud/type";
 
 export const AddNew = () => {
@@ -40,7 +41,7 @@ export const AddNew = () => {
 
   async function addTask() {
     try {
-      const res = await fetch("https://wayi.league-funny.com/api/task", {
+      const res = await fetch(API_URL, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
