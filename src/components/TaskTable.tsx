@@ -169,7 +169,12 @@ export const columns: ColumnDef<Task>[] = [
     cell: ({ row }) => {
       return (
         <div className="flex justify-center gap-x-1">
-          <EditTask />
+          <EditTask
+            id={row.getValue("id")}
+            name={row.getValue("name")}
+            description={row.getValue("description")}
+            is_completed={row.getValue("is_completed")}
+          />
           <DeleteTask />
         </div>
       );
