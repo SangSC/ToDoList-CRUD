@@ -1,3 +1,32 @@
+#[ToDo List]( https://task-list-vert-omega.vercel.app "Tasks manager")
+
+(In Processing)
+
+Tools used:
+- React - Next.js
+- Tailwind CSS
+- npm
+- Shadcn UI
+- Ant Design
+- JSON Server
+
+
+Key features include:
+- Responsive Web Design (RWD)
+- Applied REST API
+- Add new task
+
+
+
+
+
+
+
+
+
+***
+***
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
