@@ -31,7 +31,7 @@ export const AddNew = () => {
   const [isSheetOpen, setIsSheetOpen] = useState(false);
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
-  const [is_completed, setIsCompleted] = useState(false);
+  const [is_completed, setIsCompleted] = useState(true);
 
   // openSheet/closeSheet
   const openSheet = () => setIsSheetOpen(true);
