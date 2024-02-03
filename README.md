@@ -1,4 +1,4 @@
-#[ToDo List]( https://task-list-vert-omega.vercel.app "Tasks manager")
+### [ToDo List]( https://task-list-vert-omega.vercel.app "Tasks manager")
 
 (In Processing)
 
@@ -14,7 +14,12 @@ Tools used:
 Key features include:
 - Responsive Web Design (RWD)
 - Applied REST API
-- Add new task
+* CRUD
+* Add new task
+* Edit Tasks
+* Delete Tasks
+    
+
 
 
 
