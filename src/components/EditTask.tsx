@@ -82,6 +82,7 @@ const EditTask: React.FC<Props> = ({ id, name, description, is_completed }) => {
               <button
                 title="Edit"
                 className="edit-btn flex justify-center items-center"
+                onClick={() => setOnEdit(true)}
               >
                 <Pencil className="w-[14px] h-[14px]" />
               </button>
@@ -100,7 +101,7 @@ const EditTask: React.FC<Props> = ({ id, name, description, is_completed }) => {
                   <Input
                     id="name"
                     placeholder="Name of your Task"
-                    value={name}
+                    value={currentName}
                     maxLength={10}
                     onChange={(e) => setCurrentName(e.target.value)}
                     required
@@ -113,7 +114,7 @@ const EditTask: React.FC<Props> = ({ id, name, description, is_completed }) => {
                     placeholder="Type your content here."
                     id="description"
                     maxLength={100}
-                    value={description}
+                    value={currentDescription}
                     onChange={(e) => setCurrentDescription(e.target.value)}
                     required
                   />
@@ -125,7 +126,7 @@ const EditTask: React.FC<Props> = ({ id, name, description, is_completed }) => {
                     onCheckedChange={(checked: boolean) =>
                       setCurrentStatus(checked)
                     }
-                    checked={is_completed}
+                    checked={currentStatus}
                   />
                   <Label htmlFor="is_completed">
                     <CheckOutlined /> Completed
