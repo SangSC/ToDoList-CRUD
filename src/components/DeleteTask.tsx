@@ -4,24 +4,6 @@ import toast, { Toaster } from "react-hot-toast";
 
 import { API_URL } from "../lib/API_URL";
 
-const notify = () =>
-  toast(
-    (t) => (
-      <span>
-        Are you sure you want to delete?
-        <button
-          className="border-2 border-black border-opacity-50 rounded px-2 ml-4 "
-          onClick={() => toast.dismiss(t.id)}
-        >
-          OK
-        </button>
-      </span>
-    ),
-    {
-      icon: <Trash2 className="text-red-500" />,
-    }
-  );
-
 const DeleteTask = () => {
   const router = useRouter();
 
@@ -36,13 +18,32 @@ const DeleteTask = () => {
     });
     router.refresh();
   }
+  const notify = () =>
+    toast(
+      (t) => (
+        <span>
+          Are you sure you want to delete?
+          <button
+            className="border-2 border-black border-opacity-50 rounded px-2 ml-4 "
+            onClick={(event) => {
+              handleDelete(event);
+              toast.dismiss(t.id);
+            }}
+          >
+            OK
+          </button>
+        </span>
+      ),
+      {
+        icon: <Trash2 className="text-red-500" />,
+      }
+    );
 
   return (
     <div className="text-center">
       <button
         title="Delete"
         onClick={(event) => {
-          handleDelete(event);
           notify();
         }}
         className="del-btn flex justify-center items-center"
