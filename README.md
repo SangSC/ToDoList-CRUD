@@ -4,6 +4,7 @@
 
 Tools used:
 - React - Next.js
+- Typescript
 - Tailwind CSS
 - npm
 - Shadcn UI
