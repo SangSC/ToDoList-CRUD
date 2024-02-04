@@ -113,11 +113,11 @@ export const columns: ColumnDef<Task>[] = [
       return (
         <div className="capitalize">
           {row.getValue("is_completed") ? (
-            <div>
+            <div className="text-green-500">
               <CheckOutlined /> Completed
             </div>
           ) : (
-            <div>
+            <div className="text-red-500">
               <CloseOutlined /> Unfinished
             </div>
           )}
