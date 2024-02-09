@@ -175,7 +175,7 @@ export const columns: ColumnDef<Task>[] = [
             description={row.getValue("description")}
             is_completed={row.getValue("is_completed")}
           />
-          <DeleteTask />
+          <DeleteTask id={row.getValue("id")} onDelete={() => {}} />
         </div>
       );
     },
