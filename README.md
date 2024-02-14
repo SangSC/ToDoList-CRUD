@@ -20,7 +20,11 @@ Key features include:
 * Edit Tasks
 * Delete Tasks
     
-
+Mission: (not yet completed）
+- update immediately
+- edit tasks
+- delete tasks
+- filter of completed / uncompleted
 
 
 
