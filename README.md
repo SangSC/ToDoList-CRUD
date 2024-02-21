@@ -1,6 +1,8 @@
 ### [ToDo List]( https://task-list-vert-omega.vercel.app "Tasks manager")
 
 (In Processing)
+![todo](https://i.imgur.com/InEIpYa.jpeg)
+
 
 Tools used:
 - React - Next.js
@@ -10,11 +12,14 @@ Tools used:
 - Shadcn UI
 - Ant Design
 - JSON Server
+- React Hot Toast
 
 
 Key features include:
 - Responsive Web Design (RWD)
 - Applied REST API
+
+(In Processing)
 * CRUD
 * Add new task
 * Edit Tasks
