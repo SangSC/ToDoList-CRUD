@@ -9,6 +9,7 @@ Tools used:
 - Typescript
 - Tailwind CSS
 - npm
+- ESLint
 - Shadcn UI
 - Ant Design
 - JSON Server
